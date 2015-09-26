@@ -1,11 +1,11 @@
-class API::V1::ItemsController < API::VersionsController
+class API::V1::ItemsController < ApplicationController
   before_action :set_bucketlist
 
   def create
     @item = @bucketlist.items.build(item_params)
     params[:status].to_i == 1 ? @item.done! : @item.not_done!
     if @item.save
-      render json: @item, status: :created, location: api_v1_bucketlist_url(@bucketlist)
+      render template: 'api/v1/bucketlists/show'
     else
       render json: @item.errors, status: :unprocessable_entity
     end

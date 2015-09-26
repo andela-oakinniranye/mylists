@@ -11,7 +11,7 @@ Item.destroy_all
 Item.reset_pk_sequence
 
 12.times{
-  b = Bucketlist.create(name: Faker::Hacker.ingverb)
+  b = Bucketlist.create!(name: Faker::Hacker.ingverb)
   rand(0..10).times{
     Item.create(name: Faker::Hacker.say_something_smart, status: Item.statuses.values.sample, bucketlist: b)
   }

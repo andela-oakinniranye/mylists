@@ -3,13 +3,14 @@ Rails.application.routes.draw do
 
   get 'auth/logout' => 'users#logout', as: :logout
 
-  namespace :api, path: '/', default: { format: :json } do
+  namespace :api, path: '/', defaults: { format: :json } do
     namespace :v1 do
       resources :bucketlists, except: [:new, :edit] do
         resources :items, path: '/', only: [:create]
       end
     end
   end
+  # , constraints: {subdomain: 'api'}
   # constraints: {subdomain: 'api'},
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

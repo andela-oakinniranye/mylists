@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-  # include ActionController::Serialization
   include ActionController::HttpAuthentication::Token::ControllerMethods
   include ActionController::ImplicitRender
   include ActionController::Helpers
@@ -20,12 +19,12 @@ class ApplicationController < ActionController::API
 
     def authenticate_token
       authenticate_with_http_token do |auth_token, options|
-        current_user= User.find_by_token(auth_token)
+        @current_user = User.logged_in.find_by_token(auth_token)
       end
     end
 
     def unauthorized_token
       self.headers['WWW-Authenticate'] = 'Token realm="Application"'
-      render json: {errors: 'Bad Credentials'}, status: 401
+      render json: {errors: "Bad Credentials. Log in at #{login_url} to obtain a valid token"}, status: 401
     end
 end

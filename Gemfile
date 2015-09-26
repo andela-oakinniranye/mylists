@@ -8,6 +8,9 @@ gem 'pry-rails'
 gem 'unicorn-rails'
 gem 'active_model_serializers'
 gem 'jbuilder'
+# gem 'factory_girl'
+gem 'rspec-rails'
+# gem 'oj'
 
 group :production do
   gem 'pg'
