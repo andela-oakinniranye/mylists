@@ -9,6 +9,7 @@ gem 'unicorn-rails'
 gem 'active_model_serializers'
 gem 'jbuilder'
 gem 'bcrypt'
+gem 'faker'
 
 group :production do
   gem 'pg'
@@ -16,7 +17,6 @@ end
 
 group :development, :test do
   gem 'redcarpet'
-  gem 'faker'
   gem 'spring'
   gem 'sqlite3'
 end
