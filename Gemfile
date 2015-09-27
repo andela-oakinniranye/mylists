@@ -8,7 +8,6 @@ gem 'pry-rails'
 gem 'unicorn-rails'
 gem 'active_model_serializers'
 gem 'jbuilder'
-gem 'pageitin'
 gem 'bcrypt'
 
 group :production do
