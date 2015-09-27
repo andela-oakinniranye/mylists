@@ -9,7 +9,8 @@ gem 'unicorn-rails'
 gem 'active_model_serializers'
 gem 'jbuilder'
 # gem 'factory_girl'
-gem 'rspec-rails'
+gem 'pageitin'
+gem 'bcrypt'
 # gem 'oj'
 
 group :production do
@@ -21,6 +22,12 @@ group :development, :test do
   gem 'faker'
   gem 'spring'
   gem 'sqlite3'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem "factory_girl_rails"
+  gem 'coveralls'
 end
 
 

@@ -12,14 +12,13 @@ class API::V1::BucketlistsController < ApplicationController
   def create
     @bucketlist = Bucketlist.new(bucketlist_params)
     if @bucketlist.save
-      render json: @bucketlist, status: :created, location: api_v1_bucketlist_url(@bucketlist)
+      render template: 'api/v1/bucketlists/show', status: :created
     else
       render json: @bucketlist.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    @bucketlist = Bucketlist.find(params[:id])
     if @bucketlist.update(bucketlist_params)
       head :no_content
     else
@@ -38,6 +37,6 @@ class API::V1::BucketlistsController < ApplicationController
     end
 
     def bucketlist_params
-      params.permit(:name)
+      params.permit(:name).merge(user: @current_user)
     end
 end

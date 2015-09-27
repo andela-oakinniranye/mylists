@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925193759) do
+ActiveRecord::Schema.define(version: 20150927013929) do
 
   create_table "bucketlists", force: :cascade do |t|
     t.string   "name"
@@ -35,10 +35,11 @@ ActiveRecord::Schema.define(version: 20150925193759) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "token"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "login_status", default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "login_status",    default: 0
     t.string   "email"
+    t.string   "password_digest"
   end
 
 end

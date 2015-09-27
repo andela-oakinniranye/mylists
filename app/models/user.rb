@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   before_save :refresh_token
   enum login_status: [:logged_out, :logged_in]
   validates :email, presence: true, uniqueness: true
+  has_secure_password
 
   private
     def refresh_token

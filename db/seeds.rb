@@ -10,8 +10,13 @@ Bucketlist.reset_pk_sequence
 Item.destroy_all
 Item.reset_pk_sequence
 
+test_email = 'oreoluwa@outlook.com'
+user = User.where(email: test_email).first
+user.destroy if user
+ore = User.create(name: 'Oreoluwa', email: test_email, password: 'oreoluwa')
+
 12.times{
-  b = Bucketlist.create!(name: Faker::Hacker.ingverb)
+  b = ore.bucketlists.create!(name: Faker::Hacker.ingverb)
   rand(0..10).times{
     Item.create(name: Faker::Hacker.say_something_smart, status: Item.statuses.values.sample, bucketlist: b)
   }

@@ -5,7 +5,7 @@ class API::V1::ItemsController < ApplicationController
     @item = @bucketlist.items.build(item_params)
     params[:status].to_i == 1 ? @item.done! : @item.not_done!
     if @item.save
-      render template: 'api/v1/bucketlists/show'
+      render template: 'api/v1/bucketlists/show', status: :created
     else
       render json: @item.errors, status: :unprocessable_entity
     end

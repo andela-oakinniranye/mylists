@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  post 'auth/login' => 'users#login', as: :login
-
-  get 'auth/logout' => 'users#logout', as: :logout
 
   namespace :api, path: '/', defaults: { format: :json } do
     namespace :v1 do
+      post 'auth/login' => 'users#login', as: :login
+      get 'auth/logout' => 'users#logout', as: :logout
+      resources :users, only: [:create]
       resources :bucketlists, except: [:new, :edit] do
         resources :items, path: '/', only: [:create]
       end
