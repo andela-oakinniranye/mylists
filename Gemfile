@@ -8,10 +8,8 @@ gem 'pry-rails'
 gem 'unicorn-rails'
 gem 'active_model_serializers'
 gem 'jbuilder'
-# gem 'factory_girl'
 gem 'pageitin'
 gem 'bcrypt'
-# gem 'oj'
 
 group :production do
   gem 'pg'
