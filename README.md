@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/andela-oakinniranye/mylyst/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-oakinniranye/mylyst?branch=master)
+
 # Bucketlist
 
 Everyday, there's this list of things you dream of doing before you pass on.
