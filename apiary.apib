@@ -160,3 +160,32 @@ specified passing the required parameters {name, status} of the item to be creat
              date_modified: “2015-08-12 11:57:23”,
              created_by: “1113456”
             }
+       
+            
+### Update a Bucketlist [PUT]
+At times you want to edit the name of your bucketlist, say for example you
+want to change from "Bucketlist for next month" to "Bucketlist for the next 5 years".
+You can make a PUT request passing the id of the resource you wish to change and the update data
+
++ Request (application/json)
+    
+    + Header
+            
+            Authorization: Token token={TOKEN}
+
+    + Body
+            
+            {
+                "name": "Bucketlist for the next 5 years"
+            }
+
++ Parameters
+    + id (number) - The id of the bucketlist in the form of a number
+   
+    
+
++ Response 200 (application/json)
+
+    + Header
+    
+            Content-length: 0
