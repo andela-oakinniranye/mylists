@@ -1,0 +1,162 @@
+FORMAT: 1A
+HOST: https://mylyst.herokuapp.com/v1
+
+# Mylyst
+
+Everyday, there's this list of things you dream of doing before you pass on.
+
+- Dreams you wish to fulfil
+- Ideas you wish to implement
+- Friends you wish to make
+- Cars you wish to drive
+- Places you wish to go
+
+> What a life of wishes, really
+
+## Bucketlist Collection [/bucketlists]
+
+### Gets All Bucketlists [GET]
+
+You can get view all bucketlists {id, name} when you call the /bucketlists route
+
++ Response 200 (application/json)
+
+        [
+            {
+             id: 1,
+             name: “BucketList1”
+            },
+            {
+             id: 2,
+             name: “BucketList2”
+            },
+            {
+             id: 3,
+             name: “BucketList3”
+            },
+            {
+             id: 4,
+             name: “BucketList4”
+            }
+            
+        ]
+
+### Create a New Bucketlist [POST]
+
+You may create a new bucketlist by making a post request to the /bucketlists
+route. Important params to pass is the name of the bucketlist you wish to create
+
++ Request (application/json)
+
+       + Header
+            
+            Authorization: Token token={TOKEN}
+       
+       
+       + Body
+       
+            {
+                "name": "Things I want to do next year"
+            }
+     
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /bucketlists/12
+
+    + Body
+
+            {
+             id: 12,
+             name: “Things I want to do next year”,
+             items: [],
+             date_created: “2015-08-12 11:57:23”,
+             date_modified: “2015-08-12 11:57:23”,
+             created_by: “1113456”
+            }
+            
+## Bucketlist [/bucketlists/{id}]
+
+### Get a Specific Bucketlist [GET]
+
+Provided you have a valid token you can make a call to the Bucketlist "/bucketlist/:id"
+To get the full resource information on a particular bucketlist
+
++ Request
+
+    + Headers
+    
+            Authorization: Token token={TOKEN}
+
++ Parameters
+    + id (number) - The id of the bucketlist in the form of a number
+    
++ Response 200 (application/json)
+
+    + Headers
+    
+            Location: /bucketlists/12
+
+    + Body
+
+            {
+             id: 12,
+             name: “Things I want to do next year”,
+             items: [
+                {
+                    id: 1,
+                    name: “I need to do X”,
+                    date_created: “2015-08-12 11:57:23”,
+                    date_modified: “2015-08-12 11:57:23”,
+                    done: False
+                }
+             ],
+             date_created: “2015-08-12 11:57:23”,
+             date_modified: “2015-08-12 11:57:23”,
+             created_by: “1113456”
+            }
+
+
+### Create a New Bucketlist Item [POST]
+
+Provided you have a valid token you can create a new bucketlist item under the id
+specified passing the required parameters {name, status} of the item to be created
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Token token={TOKEN}
+            
+    + Body
+
+            {
+                "name": "I want to sky dive across the Niagara Falls",
+                "status": 1
+            }
+
++ Parameters
+    + id (number) - The id of the bucketlist in the form of a number
+   
+    
++ Response 201 (application/json)
+
+    + Body
+        
+            {
+             id: 12,
+             name: “Things I want to do next year”,
+             items: [
+                {
+                    id: 1,
+                    name: “I need to do X”,
+                    date_created: “2015-08-12 11:57:23”,
+                    date_modified: “2015-08-12 11:57:23”,
+                    done: False
+                }
+             ],
+             date_created: “2015-08-12 11:57:23”,
+             date_modified: “2015-08-12 11:57:23”,
+             created_by: “1113456”
+            }
