@@ -20,11 +20,11 @@ do, categorize them under a bucketlist and mark it's status.
 * * *
 > As a bit of helper, there's an additional endpoint that allows you to create an account to access bucketlists
 
-> POST /users {name: name, email: email, password: password} 
+> POST /users {name: NAME, email: EMAIL, password: PASSWORD}
 
 or
 
-> curl -d 'name=name&password=password&email=email' https://mylyst.herokuapp.com/v1/users
+> curl -X POST -d 'name=name&password=PASSWORD&email=EMAIL' https://mylyst.herokuapp.com/v1/users
 
 then, to obtain a token
 
@@ -32,7 +32,7 @@ then, to obtain a token
 
 or
 
-> curl -d 'password=password&email=email' https://mylyst.herokuapp.com/v1/auth/login
+> curl -X POST -d 'password=PASSWORD&email=EMAIL' https://mylyst.herokuapp.com/v1/auth/login
 
 You can then make a request to any of the endpoints listed by using the provided token
 
