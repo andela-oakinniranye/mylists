@@ -11,7 +11,83 @@ Everyday, there's this list of things you dream of doing before you pass on.
 - Cars you wish to drive
 - Places you wish to go
 
-> What a life of wishes, really
+**What a life of wishes, really**
+
+> The bucketlist service may not be a genie to do "pooof" and all your wishes will
+appear, but a service that enables you to create this list of things you want to
+do, categorize them under a bucketlist and mark it's status.
+
+## User Resource [/users]
+
+### Create A New User [POST]
+
+As a bit of helper, there's an additional endpoint that allows you to
+create an account to access the bucketlist API service. Make a POST
+request with {name, email, password}. If you get an error message,
+check that the email you are using is valid and be sure it has not
+been used by another user.
+
++ Request (application/json)
+    
+    + Body
+    
+            {
+                "name": "Bucketlist User",
+                "email": "user@bucketlist.com",
+                "password": "bucketlistuser"
+            }
+
++ Response 204 (application/json)
+
+
+## Login Authorization [/auth/login]
+
+### Login To Get a User Token [POST]
+
+Provided you are a registered user, you can login at any time, by making a 
+POST request to the (/auth/login) route passing {name, password} to get a unique
+token, with which you can use to make all other authorized request on the platform
+
++ Request (application/json)
+    
+    + Body
+    
+            {
+                "email": "user@bucketlist.com",
+                "password": "bucketlistuser"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              email: "user@bucketlist.com",
+              name: "bucketlistuser",
+              token: {TOKEN},
+              login_status: "logged_in"
+            }
+
+## Logout Authorization [/auth/logout]
+
+### Logout to Deauthorize A Token [GET]
+Once you have completed all that you need to do with the service, you can
+deauthorize the token by making a GET request to the logout (/auth/logout)
+route with valid token set in the header.
+
++ Request (application/json)
+
+    + Header
+    
+            Authorization: Token token={TOKEN}
+            
++ Response 200 (application/json)
+
+    + Body
+            
+            {
+              message: "You were successfully logged out!"
+            }
 
 ## Bucketlist Collection [/bucketlists]
 
