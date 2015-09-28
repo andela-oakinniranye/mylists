@@ -184,7 +184,26 @@ You can make a PUT request passing the id of the resource you wish to change and
    
     
 
-+ Response 200 (application/json)
++ Response 204 (application/json)
+
+    + Header
+    
+            Content-length: 0
+            
+### Delete a Bucketlist [DELETE]
+Say, you have to delete a bucketlist, you can make a DELETE request to the API
+endpoint with a valid token.
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Token token={TOKEN}
+            
++ Parameters
+    + id (number) - The id of the bucketlist in the form of a number
+   
++ Response 204 (application/json)
 
     + Header
     
