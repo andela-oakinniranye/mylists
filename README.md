@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/andela-oakinniranye/mylyst/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-oakinniranye/mylyst?branch=master)
+
 # Bucketlist
 
 Everyday, there's this list of things you dream of doing before you pass on.
@@ -15,6 +17,30 @@ Everyday, there's this list of things you dream of doing before you pass on.
 The bucketlist service may not be a genie to do "pooof" and all your wishes will
 appear, but a service that enables you to create this list of things you want to
 do, categorize them under a bucketlist and mark it's status.
+* * *
+> As a bit of helper, there's an additional endpoint that allows you to create an account to access bucketlists
+
+> POST /users {name: name, email: email, password: password} 
+
+or
+
+> curl -d 'name=name&password=password&email=email' https://mylyst.herokuapp.com/v1/users
+
+then, to obtain a token
+
+> POST /auth/login {email: email, password: password}
+
+or
+
+> curl -d 'password=password&email=email' https://mylyst.herokuapp.com/v1/auth/login
+
+You can then make a request to any of the endpoints listed by using the provided token
+
+Sample request using curl:
+
+> curl -H 'Authorization: Token token=TOKEN' https://mylyst.herokuapp.com/v1/bucketlists/1
+
+* * *
 
 API endpoints exposed includes:
 
