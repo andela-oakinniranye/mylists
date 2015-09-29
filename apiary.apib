@@ -169,8 +169,9 @@ To get the full resource information on a particular bucketlist
             Authorization: Token token={TOKEN}
 
 + Parameters
-    + id (number) - The id of the bucketlist in the form of a number
-    
+    + id: `1` (number, required) - The id of the bucketlist in the form of a number
+        
+        
 + Response 200 (application/json)
 
     + Headers
@@ -216,7 +217,7 @@ specified passing the required parameters {name, status} of the item to be creat
             }
 
 + Parameters
-    + id (number) - The id of the bucketlist in the form of a number
+    + id: `12` (number, required) - The id of the bucketlist in the form of a number
    
     
 + Response 201 (application/json)
@@ -243,8 +244,10 @@ specified passing the required parameters {name, status} of the item to be creat
             
 ### Update a Bucketlist [PUT]
 At times you want to edit the name of your bucketlist, say for example you
-want to change from "Bucketlist for next month" to "Bucketlist for the next 5 years".
-You can make a PUT request passing the id of the resource you wish to change and the update data
+want to change from "Bucketlist for next month" to "Bucketlist for the
+next 5 years". You can make a PUT request passing the id of the resource
+you wish to change and the update data. This action is only permitted
+if you created this bucketlist
 
 + Request (application/json)
     
@@ -259,7 +262,7 @@ You can make a PUT request passing the id of the resource you wish to change and
             }
 
 + Parameters
-    + id (number) - The id of the bucketlist in the form of a number
+    + id: `13` (number, required) - The id of the bucketlist in the form of a number
    
     
 
@@ -271,7 +274,7 @@ You can make a PUT request passing the id of the resource you wish to change and
             
 ### Delete a Bucketlist [DELETE]
 Say, you have to delete a bucketlist, you can make a DELETE request to the API
-endpoint with a valid token.
+endpoint with a valid token, provided you created the bucketlist
 
 + Request (application/json)
 
@@ -280,7 +283,7 @@ endpoint with a valid token.
             Authorization: Token token={TOKEN}
             
 + Parameters
-    + id (number) - The id of the bucketlist in the form of a number
+    + id: `13` (number, required) - The id of the bucketlist in the form of a number
    
 + Response 204 (application/json)
 
