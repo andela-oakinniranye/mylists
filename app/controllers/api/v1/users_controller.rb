@@ -1,9 +1,9 @@
 class API::V1::UsersController < ApplicationController
-  skip_before_action :authenticate, only: [:login, :create]
+  skip_before_action :authenticate, except: [:logout]
 
   def login
     @current_user = User.find_by_email(user_params[:email])
-    if @current_user.authenticate(user_params[:password])
+    if @current_user && @current_user.authenticate(user_params[:password])
       @current_user.logged_in!
     else
       invalid_credentials and return
@@ -19,9 +19,9 @@ class API::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      head :no_content
+      head :created
     else
-      render json: @user.errors, status: 403
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 
@@ -31,6 +31,6 @@ class API::V1::UsersController < ApplicationController
     end
 
     def invalid_credentials
-      render json: {errors: "Your username and password don't match"}, status: 401
+      render json: {errors: "Either your username and password don't match or you don't have an account"}, status: :forbidden
     end
 end

@@ -10,6 +10,12 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get '/', to: redirect('/v1/bucketlists')
+
+  match "*path", to: 'application#no_route_found', via: :all
+  #-> (env) {[400, {}, ['{errors: "The resource you are trying to call does not exist"}']]}, via: :all
+  # get '*unmatched_route', to: 'application#no_route_found'
   # , constraints: {subdomain: 'api'}
   # constraints: {subdomain: 'api'},
   # The priority is based upon order of creation: first created -> highest priority.

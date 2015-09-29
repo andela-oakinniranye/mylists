@@ -1,6 +1,4 @@
 class ExtendedBucketlistSerializer < BucketlistSerializer
-  # def self.more_data
-  # end
   has_many :items
   attributes :items, :date_created, :date_modified, :created_by
 

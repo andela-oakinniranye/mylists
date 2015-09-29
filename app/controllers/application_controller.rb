@@ -6,10 +6,11 @@ class ApplicationController < ActionController::API
   helper BucketlistsHelper
   before_action :authenticate
 
+  def no_route_found
+    render json: {errors: "The resource you are trying to access does not exist"}, status: 400
+  end
+
   private
-    # def default_serializer_options
-    #   {root: false }
-    # end
     def authenticate
       authenticate_token || unauthorized_token
     end

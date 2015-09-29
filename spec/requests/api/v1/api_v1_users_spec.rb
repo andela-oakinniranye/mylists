@@ -11,6 +11,13 @@ RSpec.describe "API::V1::Users", type: :request do
       expect(json['email']).to eq valid_user.email
     end
 
+    it 'should give appropriate response to user when credentials are invalid when logging in' do
+      make_request(:post, api_v1_login_url, invalid_user_hash, nil)
+
+      expect(response).to have_http_status(:forbidden)
+      expect(json['errors']).to eq invalid_user_message
+    end
+
     it 'should log out a user' do
       make_request(:get, api_v1_logout_path, nil, valid_user.token)
 
@@ -18,7 +25,7 @@ RSpec.describe "API::V1::Users", type: :request do
       expect(valid_user.logged_out?).to be true
     end
 
-    it 'should not allow logged out user to access protected token' do
+    it 'should not allow logged out user to access authorized route with expired token' do
       token = valid_user.token
       make_request(:get, api_v1_logout_path, nil, token)
 

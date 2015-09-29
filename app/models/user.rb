@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-  has_many :bucketlists
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  has_many :bucketlists, dependent: :destroy
   before_create :add_unique_token
   before_save :refresh_token
   enum login_status: [:logged_out, :logged_in]
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX }
   has_secure_password
 
   private

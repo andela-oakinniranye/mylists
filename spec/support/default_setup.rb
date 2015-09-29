@@ -1,10 +1,11 @@
 RSpec.configure do |config|
   config.before do
-    load 'db/seeds.rb'
+    seed
   end
 
   config.before(:each) do
     reset_users
+    seed if Bucketlist.count == 0
     setup_valid_user
   end
 end
@@ -13,28 +14,10 @@ end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
-  config.include MakeRequest, type: :request
-  config.include JsonHelpers, type: :request
+  config.include JsonHelpers
   config.include BucketlistSetup
   config.include UserSetupHelpers
+  config.include CustomErrorMessages
+  config.include MakeRequest, type: :request
+  config.include ControllerHelperMethods, type: :controller
 end
-
-
-# reset_users
-# valid_user
-
-  # config.before do
-  #   FactoryGirl.define do
-  #     sequence :email do |n|
-  #       "email_for#{n}@example.com"
-  #     end
-  #     require 'pry' ; binding.pry
-  #     factory :user do
-  #       name "John"
-  #       email
-  #     end
-  #   end
-  # end
-
-
-# {authorization: "Token token=#{auth_token}"}
