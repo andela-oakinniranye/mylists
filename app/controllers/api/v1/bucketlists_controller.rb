@@ -1,5 +1,6 @@
 class API::V1::BucketlistsController < ApplicationController
-  before_action :set_bucketlist, only: [:show, :update, :destroy]
+  before_action :set_bucketlist, only: [ :update, :destroy]
+  before_action :set_bucketlist_with_items, only: [:show]
   before_action :check_that_current_user_owns_the_bucketlist, only: [:update, :destroy]
   skip_before_action :authenticate, only: [:index]
 
@@ -33,6 +34,10 @@ class API::V1::BucketlistsController < ApplicationController
   end
 
   private
+    def set_bucketlist_with_items
+      @bucketlist = Bucketlist.fetch_bucketlists_with_items.find(params[:id])
+    end
+
     def set_bucketlist
       @bucketlist = Bucketlist.find(params[:id])
     end
