@@ -12,11 +12,11 @@ Everyday, there's this list of things you dream of doing before you pass on.
 
 > What a life of wishes, really
 
-* * *
-
 The bucketlist service may not be a genie to do "pooof" and all your wishes will
 appear, but a service that enables you to create this list of things you want to
 do, categorize them under a bucketlist and mark it's status.
+
+> To test out the API you can interact with the apiary documentation at http://docs.mylyst.apiary.io
 * * *
 > As a bit of helper, there's an additional endpoint that allows you to create an account to access bucketlists
 
